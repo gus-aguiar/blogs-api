@@ -4,10 +4,10 @@
  * @param {import('sequelize').DataTypes} DataTypes
  */
 
-const Users = (sequelize, DataTypes) => {
-    const UsersTable = sequelize.define('Users', {
+const User = (sequelize, DataTypes) => {
+    const UsersTable = sequelize.define('User', {
         id: DataTypes.INTEGER,
-        display_name: DataTypes.STRING,
+        displayName: DataTypes.STRING,
         email: DataTypes.STRING,
         password: DataTypes.STRING,
         image: DataTypes.STRING,
@@ -22,5 +22,5 @@ const Users = (sequelize, DataTypes) => {
     return UsersTable;
     };
  
-  module.exports = Users;
+  module.exports = User;
   
