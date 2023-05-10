@@ -4,12 +4,12 @@
  * @param {import('sequelize').DataTypes} DataTypes
  */
 
-const BlogPosts = (sequelize, DataTypes) => {
-    const BlogPostsTable = sequelize.define('blog_posts', {
+const BlogPost = (sequelize, DataTypes) => {
+    const BlogPostsTable = sequelize.define('BlogPost', {
         id: DataTypes.INTEGER,
         title: DataTypes.STRING,
         content: DataTypes.STRING,
-        user_id: DataTypes.INTEGER,
+        userId: DataTypes.INTEGER,
         published: DataTypes.DATE,
         updated: DataTypes.DATE,
     },
@@ -19,7 +19,14 @@ const BlogPosts = (sequelize, DataTypes) => {
         tableName: 'blog_posts',
     },
     );
+    BlogPostsTable.associate = (models) => {
+        BlogPostsTable.belongsTo(models.User, {
+            foreignKey: 'userId',
+            as: 'user',
+        });
+    };
+    
     return BlogPostsTable;
     };
  
-  module.exports = BlogPosts;
+  module.exports = BlogPost;
