@@ -6,7 +6,7 @@
 
 const BlogPost = (sequelize, DataTypes) => {
     const BlogPostsTable = sequelize.define('BlogPost', {
-        id: DataTypes.INTEGER,
+        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
         title: DataTypes.STRING,
         content: DataTypes.STRING,
         userId: DataTypes.INTEGER,
@@ -25,7 +25,7 @@ const BlogPost = (sequelize, DataTypes) => {
             as: 'user',
         });
     };
-    
+
     return BlogPostsTable;
     };
  

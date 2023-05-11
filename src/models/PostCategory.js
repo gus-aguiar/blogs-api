@@ -6,8 +6,19 @@
 
 const PostsCategory = (sequelize, DataTypes) => {
     const PostsCategoryTable = sequelize.define('PostCategories', {
-        post_id: DataTypes.INTEGER,
-        category_id: DataTypes.INTEGER,
+      postId: {
+        type: DataTypes.INTEGER,
+        foreignKey: true,
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+      },
+      categoryId: {
+        type: DataTypes.INTEGER,
+        foreignKey: true,
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+      
+    },
     },
     {
         tableName: 'posts_categories',
