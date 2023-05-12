@@ -11,4 +11,9 @@ const create = async (body) => {
     return jwt.createToken(userWithouthPassword);
   };
 
-module.exports = { create };
+  const findAll = async () => {
+    const users = await User.findAll({ attributes: { exclude: ['password'] } });
+    return users;
+  };
+
+module.exports = { create, findAll };

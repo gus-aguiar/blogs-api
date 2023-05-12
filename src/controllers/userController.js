@@ -1,5 +1,6 @@
 const userService = require('../services/userService');
 const userValidation = require('../services/validations/userValidation');
+const jwt = require('../auth/authFunction');
 
 const create = async (req, res) => {
     try {
@@ -13,4 +14,16 @@ const create = async (req, res) => {
     }
   };
 
-module.exports = { create };
+  const findAll = async (req, res) => {
+    try {
+      const token = req.headers.authorization;
+      if (!token) return res.status(401).json({ message: 'Token not found' });
+      const decoded = jwt.verifyToken(token);
+      if (decoded.error) return res.status(401).json({ message: 'Expired or invalid token' });
+      const result = await userService.findAll();
+      res.status(200).json(result);
+    } catch (error) {
+      return res.status(401).json({ message: 'Expired or invalid token' });
+    }
+  };
+module.exports = { create, findAll };

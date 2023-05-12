@@ -15,6 +15,7 @@ app.use(express.json());
 
 app.post('/login', loginController.login);
 app.post('/user', userController.create);
+app.get('/user', userController.findAll);
 // ...
 
 // É importante exportar a constante `app`,
