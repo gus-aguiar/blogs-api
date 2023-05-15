@@ -6,4 +6,9 @@ const { Category } = require('../models');
     return returnJson;
   };
 
-module.exports = { create };
+    const findAll = async () => {
+        const categories = await Category.findAll();
+        return categories;
+    };
+
+module.exports = { create, findAll };
