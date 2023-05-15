@@ -10,4 +10,15 @@ const findAll = async () => {
   return categories;
 };
 
-module.exports = { findAll };
+const findById = async (id) => {
+  const categories = await BlogPost.findByPk(
+id,
+    { include: [
+      { model: User, as: 'user', attributes: { exclude: ['password'] } },
+      { model: Category, as: 'categories' },
+    ] },
+);
+  return categories;
+};
+
+module.exports = { findAll, findById };

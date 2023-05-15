@@ -22,6 +22,7 @@ app.get('/user/:id', userController.findById);
 app.post('/categories', categoryController.create);
 app.get('/categories', categoryController.findAll);
 app.get('/post', postController.findAll);
+app.get('/post/:id', postController.findById);
 // ...
 
 // É importante exportar a constante `app`,
