@@ -2,6 +2,7 @@ const express = require('express');
 const loginController = require('./controllers/loginController');
 const userController = require('./controllers/userController');
 const categoryController = require('./controllers/categoryController');
+const postController = require('./controllers/postController');
 
 // ...
 
@@ -20,6 +21,7 @@ app.get('/user', userController.findAll);
 app.get('/user/:id', userController.findById);
 app.post('/categories', categoryController.create);
 app.get('/categories', categoryController.findAll);
+app.get('/post', postController.findAll);
 // ...
 
 // É importante exportar a constante `app`,

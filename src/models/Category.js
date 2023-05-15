@@ -11,7 +11,7 @@ const Catogory = (sequelize, DataTypes) => {
     },
     {
         tableName: "categories",
-        underscored: true,
+
         timestamps: false,
         }
     );
